@@ -1,0 +1,85 @@
+Id, Name, Parent
+
+0, "Zombie Proof Silo", 
+
+1, Residential Section, 0
+1.1, Condos, 1
+1.1.1, Kitchen, 1.1
+1.1.1.1, Appliances, 1.1.1
+1.1.1.1.1, Materials, 1.1.1.1
+1.1.1.1.2, Labor, 1.1.1.1
+1.1.1.2, Counters, 1.1.1
+1.1.1.2.1, Materials, 1.1.1.2
+1.1.1.2.2, Labor, 1.1.1.2
+1.1.1.3, Flooring, 1.1.1
+1.1.1.3.1, Materials, 1.1.1.3
+1.1.1.3.2, Labor, 1.1.1.3
+1.1.1.4, Supplies, 1.1.1
+1.1.1.4.1, Flatware, 1.1.1.4
+1.1.1.4.2, Dishes, 1.1.1.4
+1.1.1.4.3, Linens, 1.1.1.4
+1.1.1.4.4, Utensils, 1.1.1.4
+1.1.1.4.5, Cookware, 1.1.1.4
+1.1.2, Bathrooms, 1.1
+1.1.2.1, Fixtures, 1.1.2
+1.1.2.1.1, Materials, 1.1.2.1
+1.1.2.1.2, Labor, 1.1.2.1
+1.1.2.2, Counters, 1.1.2
+1.1.2.2.1, Materials, 1.1.2.2
+1.1.2.2.2, Labor, 1.1.2.2
+1.1.2.3, Flooring, 1.1.2
+1.1.2.3.1, Materials, 1.1.2.3
+1.1.2.3.2, Labor, 1.1.2.3
+1.1.2.4, Supplies, 1.1.2
+1.1.2.4.1, Linens, 1.1.2.4
+1.1.2.4.2, Disposable Supplies, 1.1.2.4
+1.1.3, Living Spaces, 1.1
+1.1.3.1, Flooring, 1.1.3
+1.1.3.1.1, Material, 1.1.3.1
+1.1.3.1.2, Labor, 1.1.3.1
+1.1.3.2, Furnishings, 1.1.3
+1.1.3.2.1, Seating, 1.1.3.2
+1.1.3.2.2, Dining, 1.1.3.2
+1.1.3.2.3, Entertainment, 1.1.3.2
+1.1.4, Bedrooms, 1.1
+1.1.4.1, Flooring, 1.1.4
+1.1.4.1.1, Materials, 1.1.4.1
+1.1.4.1.2, Labor, 1.1.4.1
+1.1.4.2, Furnishings, 1.1.4
+1.1.4.2.1, Beds, 1.1.4.2,
+1.1.4.2.2, Dressers, 1.1.4.2
+
+2, Resident Sign-Up Package, 0
+2.1, Bug-Out Bag, 2
+2.1.1, Backpack, 2.1
+2.1.2, Survival Gear, 2.1
+2.1.3, Knife, 2.1
+2.1.4, Thermal Blanket, 2.1
+2.1.5, Map, 2.1
+
+3, Core Facilities, 0
+3.1, Air Conditioning, 3
+3.1.1, Materials, 3.1
+3.1.2, Labor, 3.1
+3.2, Air Filtration, 3
+3.2.1, Materials, 3.2
+3.2.2, Labor, 3.2
+3.3 Generators, 3
+3.3.1, Materials, 3.3
+3.3.2, Labor, 3.3
+3.4, Hydroponic Farm, 3
+3.4.1, Materials, 3.4
+3.4.2, Labor, 3.4
+3.4.3, Plants, 3.4
+3.5, Aquaculture Farm, 3
+3.5.1, Materials, 3.5
+3.5.2, Labor, 3.5
+3.5.3, Fish, 3.5
+
+4, Residential Transit, 0
+4.1, Elevator, 4
+4.1.1, Material, 4.1
+4.1.2, Labor, 4.1
+4.2, Stairwell, 4
+4.2.1, Material, 4.2
+4.2.2, Labor, 4.2

@@ -1,0 +1,34 @@
+Types of Loops
+
+for
+Structure: for ( initializer; condition; iterator ) { body }
+    For loops are your bread-and-butter for when you're trying to iterate a well defined number of times, or when you need an iterator capable of non-standard behavior. They are a pre-test loop, meaning that after the initializer is executed, the condition is immediately checked before beginning the first iteration of the loop. The optional initializer section of the for statement can be used to declare a new variable (ex: "int i") which will be scoped to the for loop, and which can be any type. The optional condition section of the for statement can be used to setup a conditional expression used to determine if the loop should execute the next iteration. Finally the optional iterator section of the for statement can be used to modify a variable after each successful iteration.
+Good: for ( int idx = 0; idx < myArray.Length; idx++) { } // Clear initializer, condition, and iterator.
+Bad: for ( ; ; ) { } // This will compile, but it is an infinite loop. You should avoid this.
+Ugly: for ( ; value1 < value2; ) { } // This is just a while loop, you should use that instead.
+(More Info: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/for)
+
+while
+Structure: while ( condition ) { body }
+    While loops are loops that only explicitly require a condition expression to be set and will execute the body only if the condition is met and will continue to do so until a new iteration would begin but condition is not met. While loops are a great alternative to for loops in cases where the number of iterations is not known beforehand or you don't need to track a specific value like you do with a for loops iterator.
+Good: while ( keyDown(Space) ) { spaceHeldTimer++; } // Could be achieved with a for loop, but might look odd.
+Bad: while ( true ) { } // This will compile, but is an infinite loop. You should avoid this.
+Ugly: int idx = 0; while ( idx < 10 ) { idx++; } // This is functionally identical to a for loop and might be clearer as one.
+(More Info: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/while)
+
+do-while
+Structure: do { body } while ( condition );
+    Do-while loops are the post-test sibling of while loops and are nearly functionally identical. The only notable difference is that a do-while loop will iterate through the body of the loop once before checking if the condition is valid.
+Good: do { attemptCount++; } while ( AttemptAction() ); // Ensure we don't miscount by skipping the first iteration.
+Bad: do { } while ( true ); // This will compile, but is an infinite loop. You should avoid this.
+(More Info: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/do)
+
+foreach
+Structure: foreach ( variableType variableName in expression ) { body }
+    Foreach loops are a useful type of loop that use an IEnumerator (or similar object) to iterate through the elements in a collection until the IEnumerator can no longer find the next element. Unlike the other types of loop, foreach loops do not have explicit exit conditions and will iterate through to the end of the collection unless manually broken. The variableType and variableName of a foreach statement provide for the declaration of a local variable into which a readonly copy of each element in the collection will be copied during that element's iteration. The expression of a foreach statement accepts an object of any type implementing either IEnumerable, IEnumerable<T>, or that provides a GetEnumerator() method meeting certain constraints.
+Good: foreach ( int intVal in intHashSet ) { } // HashSet is collection that doesn't offer index-based access, so iterating through the values with a foraech loop is a solid way of accessing them.
+Bad: foreach ( int intVal in intHashSet ) { intHashSet.Add(5); } // The specifications of a foreach loop make it pretty hard to mess up and still compile, but a common gotcha is attempting to modify a collection while you're iterating over it which will throw an InvalidOperationException.
+(More Info: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/foreach-in)
+
+Exit Conditions
+    If your loop doesn't have an exit condition, it doesn't exit. This is generally not the desired behavior for your application, so you should avoid it by using an appropriate exit condition based on the type of loop you're using. 'for', 'while' and 'do-while' loops have explicit exit conditions as part of their structure, and 'foreach' loops will exit once the iterator reaches the end of the sequence. You can also use the 'break' statement inside the body of any loop, which will immediately cause the loop to be exited early. 'break' statements are very useful for preventing unnecessary iteration over a sequence if you've already done the operations you need.
