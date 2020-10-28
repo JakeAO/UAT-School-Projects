@@ -32,7 +32,10 @@ namespace SadPumpkin.Stack
             if (_topIdx == -1)
                 throw new InvalidOperationException("Attempted Pop() when Stack had no elements.");
 
-            return _array[_topIdx--];
+            T val = _array[_topIdx];
+            _array[_topIdx] = default;
+            _topIdx--;
+            return val;
         }
 
         public T Peek()
