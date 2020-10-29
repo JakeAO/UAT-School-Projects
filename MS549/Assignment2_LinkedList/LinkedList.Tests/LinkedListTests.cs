@@ -197,15 +197,44 @@ namespace SadPumpkin.LinkedList.Tests
             string print2 = newList.Print();
             Assert.Less(print1.Length, print2.Length);
 
-            newList.Remove(1);
+            newList.Insert(3);
 
             string print3 = newList.Print();
-            Assert.Greater(print2.Length, print3.Length);
+            Assert.Less(print2.Length, print3.Length);
 
-            newList.Remove(2);
+            newList.Remove(1);
 
             string print4 = newList.Print();
             Assert.Greater(print3.Length, print4.Length);
+
+            newList.Remove(2);
+
+            string print5 = newList.Print();
+            Assert.Greater(print4.Length, print5.Length);
+        }
+
+        [Test]
+        public void insert_order_is_preserved()
+        {
+            ILinkedList<int> newList = new LinkedList<int>();
+
+            newList.Insert(1);
+            newList.Insert(2);
+            newList.Insert(3);
+            newList.Insert(4);
+            newList.Insert(5);
+            newList.Insert(6);
+
+            INode<int> testNode = newList.First;
+            while (testNode != null)
+            {
+                if (testNode.Next != null)
+                {
+                    Assert.Less(testNode.Value, testNode.Next.Value);
+                }
+
+                testNode = testNode.Next;
+            }
         }
     }
 }
