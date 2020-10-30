@@ -22,7 +22,7 @@
    <div id="projectname">MS549 LinkedList
    &#160;<span id="projectnumber">v1</span>
    </div>
-   <div id="projectbrief">Simple custom implementation of LinkedList that implements very basic Add, Remove, and Find functionality.</div>
+   <div id="projectbrief">A bare-bones LinkedList implementation.</div>
   </td>
  </tr>
  </tbody>
@@ -52,13 +52,16 @@ $(function() {
 <div class="title">SadPumpkin.LinkedList.INode&lt; T &gt; Interface Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for a <a class="el" href="class_sad_pumpkin_1_1_linked_list_1_1_linked_list.html" title="Bare-bones implementation of ILinkedList and the linked-list data structure.">LinkedList</a> node which contains a generic Value and links to adjacent Nodes.  
+ <a href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for SadPumpkin.LinkedList.INode&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.png" usemap="#SadPumpkin.LinkedList.INode_3C_20T_20_3E_map" alt=""/>
   <map id="SadPumpkin.LinkedList.INode_3C_20T_20_3E_map" name="SadPumpkin.LinkedList.INode_3C_20T_20_3E_map">
-<area href="class_sad_pumpkin_1_1_linked_list_1_1_node.html" alt="SadPumpkin.LinkedList.Node&lt; T &gt;" shape="rect" coords="0,56,209,80"/>
+<area href="class_sad_pumpkin_1_1_linked_list_1_1_node.html" title="Interface for a LinkedList node which contains a generic Value and links to adjacent Nodes." alt="SadPumpkin.LinkedList.Node&lt; T &gt;" shape="rect" coords="0,56,209,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -75,8 +78,19 @@ Properties</h2></td></tr>
 <tr class="separator:a0e78fd0b4bd8554b7f771aeb3703f632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00003">3</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
+<div class="textblock"><p>Interface for a <a class="el" href="class_sad_pumpkin_1_1_linked_list_1_1_linked_list.html" title="Bare-bones implementation of ILinkedList and the linked-list data structure.">LinkedList</a> node which contains a generic Value and links to adjacent Nodes. </p>
+<div class="fragment"><div class="line">INode&lt;int&gt; newNode1 = <span class="keyword">new</span> Node&lt;int&gt;(6);</div>
+<div class="line">INode&lt;int&gt; newNode2 = <span class="keyword">new</span> Node&lt;int&gt;(7);</div>
+<div class="line">newNode1.Next = newNode2;</div>
+<div class="line">newNode2.Previous = newNode1;</div>
+</div><!-- fragment --> <dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Value type which node will contain.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00016">16</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
 </div><h2 class="groupheader">Property Documentation</h2>
 <a id="a0e78fd0b4bd8554b7f771aeb3703f632"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e78fd0b4bd8554b7f771aeb3703f632">&#9670;&nbsp;</a></span>Next</h2>
@@ -100,7 +114,7 @@ Properties</h2></td></tr>
 
 <p>Reference to the next node in the list. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00018">18</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00031">31</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
 
 </div>
 </div>
@@ -126,7 +140,7 @@ Properties</h2></td></tr>
 
 <p>Reference to the previous node in the list. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00013">13</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00026">26</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
 
 </div>
 </div>
@@ -152,12 +166,12 @@ Properties</h2></td></tr>
 
 <p>Readonly value of the node. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00008">8</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_node_8cs_source.html#l00021">21</a> of file <a class="el" href="_i_node_8cs_source.html">INode.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li><a class="el" href="_i_node_8cs_source.html">INode.cs</a></li>
+<li>LinkedList/<a class="el" href="_i_node_8cs_source.html">INode.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

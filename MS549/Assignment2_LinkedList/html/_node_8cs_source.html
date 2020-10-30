@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MS549 LinkedList: Node.cs Source File</title>
+<title>MS549 LinkedList: LinkedList/Node.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
    <div id="projectname">MS549 LinkedList
    &#160;<span id="projectnumber">v1</span>
    </div>
-   <div id="projectbrief">Simple custom implementation of LinkedList that implements very basic Add, Remove, and Find functionality.</div>
+   <div id="projectbrief">A bare-bones LinkedList implementation.</div>
   </td>
  </tr>
  </tbody>
@@ -39,6 +39,10 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_71125faae7de41fad78e06b851a5003e.html">LinkedList</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
@@ -47,31 +51,33 @@ $(function() {
 <div class="contents">
 <a href="_node_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_sad_pumpkin_1_1_linked_list.html">SadPumpkin.LinkedList</a></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">    3</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">Node</a>&lt;T&gt; : <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode</a>&lt;T&gt;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    {</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">    5</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">Value</a> { <span class="keyword">get</span>; }</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">    6</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode&lt;T&gt;</a> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">Previous</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">    7</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode&lt;T&gt;</a> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">Next</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">    9</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">Node</a>(T value)</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">Value</a> = value;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">   14</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">ToString</a>()</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;({Value})&quot;</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">Node</a>&lt;T&gt; : <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode</a>&lt;T&gt;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">   21</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">Value</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">   26</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode&lt;T&gt;</a> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">Previous</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">   31</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">INode&lt;T&gt;</a> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">Next</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">   36</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">Node</a>(T value)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">Value</a> = value;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">   51</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">ToString</a>()</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;({Value})&quot;</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a2a0cf8271629775c0713fbf211bcc542"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">SadPumpkin.LinkedList.Node.Previous</a></div><div class="ttdeci">INode&lt; T &gt; Previous</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00006">Node.cs:6</a></div></div>
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_ab452135d15541ff8695d34ff6da1cdd5"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">SadPumpkin.LinkedList.Node.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00014">Node.cs:14</a></div></div>
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a26ff99ee9f861b2e86a31cf1833fbc64"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">SadPumpkin.LinkedList.Node.Node</a></div><div class="ttdeci">Node(T value)</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00009">Node.cs:9</a></div></div>
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a6db7c37f32ee1ae0cf4bd55fdcb3054c"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">SadPumpkin.LinkedList.Node.Value</a></div><div class="ttdeci">T Value</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00005">Node.cs:5</a></div></div>
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a27a7a0d7f443a84883725294ca572a47"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">SadPumpkin.LinkedList.Node.Next</a></div><div class="ttdeci">INode&lt; T &gt; Next</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00007">Node.cs:7</a></div></div>
-<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">SadPumpkin.LinkedList.Node</a></div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00003">Node.cs:4</a></div></div>
-<div class="ttc" id="ainterface_sad_pumpkin_1_1_linked_list_1_1_i_node_html"><div class="ttname"><a href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">SadPumpkin.LinkedList.INode</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_node_8cs_source.html#l00003">INode.cs:4</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a2a0cf8271629775c0713fbf211bcc542"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a2a0cf8271629775c0713fbf211bcc542">SadPumpkin.LinkedList.Node.Previous</a></div><div class="ttdeci">INode&lt; T &gt; Previous</div><div class="ttdoc">Reference to the previous node in the list.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00026">Node.cs:26</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_ab452135d15541ff8695d34ff6da1cdd5"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#ab452135d15541ff8695d34ff6da1cdd5">SadPumpkin.LinkedList.Node.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns a debug string containing the node's contents.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00051">Node.cs:51</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a26ff99ee9f861b2e86a31cf1833fbc64"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a26ff99ee9f861b2e86a31cf1833fbc64">SadPumpkin.LinkedList.Node.Node</a></div><div class="ttdeci">Node(T value)</div><div class="ttdoc">Construct a new node with the provided value and no links.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00036">Node.cs:36</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a6db7c37f32ee1ae0cf4bd55fdcb3054c"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a6db7c37f32ee1ae0cf4bd55fdcb3054c">SadPumpkin.LinkedList.Node.Value</a></div><div class="ttdeci">T Value</div><div class="ttdoc">Readonly value of the node.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00021">Node.cs:21</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html_a27a7a0d7f443a84883725294ca572a47"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html#a27a7a0d7f443a84883725294ca572a47">SadPumpkin.LinkedList.Node.Next</a></div><div class="ttdeci">INode&lt; T &gt; Next</div><div class="ttdoc">Reference to the next node in the list.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00031">Node.cs:31</a></div></div>
+<div class="ttc" id="aclass_sad_pumpkin_1_1_linked_list_1_1_node_html"><div class="ttname"><a href="class_sad_pumpkin_1_1_linked_list_1_1_node.html">SadPumpkin.LinkedList.Node</a></div><div class="ttdoc">Interface for a LinkedList node which contains a generic Value and links to adjacent Nodes.</div><div class="ttdef"><b>Definition:</b> <a href="_node_8cs_source.html#l00016">Node.cs:17</a></div></div>
+<div class="ttc" id="ainterface_sad_pumpkin_1_1_linked_list_1_1_i_node_html"><div class="ttname"><a href="interface_sad_pumpkin_1_1_linked_list_1_1_i_node.html">SadPumpkin.LinkedList.INode</a></div><div class="ttdoc">Interface for a LinkedList node which contains a generic Value and links to adjacent Nodes.</div><div class="ttdef"><b>Definition:</b> <a href="_i_node_8cs_source.html#l00016">INode.cs:17</a></div></div>
 <div class="ttc" id="anamespace_sad_pumpkin_1_1_linked_list_html"><div class="ttname"><a href="namespace_sad_pumpkin_1_1_linked_list.html">SadPumpkin.LinkedList</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_linked_list_8cs_source.html#l00001">ILinkedList.cs:2</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -2,12 +2,48 @@
 
 namespace SadPumpkin.LinkedList
 {
+    /// <summary>
+    /// Bare-bones implementation of ILinkedList and the
+    /// linked-list data structure.
+    /// </summary>
+    /// <example>
+    /// <code>
+    /// ILinkedList<int> newList = new LinkedList<int>();
+    /// newList.Insert(5);
+    /// newList.Insert(7);
+    /// </code>
+    /// </example>
+    /// <typeparam name="T">Value type which list nodes will contain.</typeparam>
     public class LinkedList<T> : ILinkedList<T>
     {
+        /// <summary>
+        /// The number of nodes in the list.
+        /// </summary>
         public int Count { get; private set; }
+        
+        /// <summary>
+        /// The first node in the list.
+        /// </summary>
         public INode<T> First { get; private set; }
+        
+        /// <summary>
+        /// The last node in the list.
+        /// </summary>
         public INode<T> Last { get; private set; }
 
+        /// <summary>
+        /// Return the first node which contains the provided value.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// ILinkedList<int> newList = new LinkedList<int>();
+        /// newList.Insert(5);
+        /// newList.Insert(7);
+        /// INode<int> foundNode = newList.Find(7);
+        /// </code>
+        /// </example>
+        /// <param name="value">Value to locate</param>
+        /// <returns>First node which matches value</returns>
         public INode<T> Find(T value)
         {
             INode<T> testNode = First;
@@ -24,6 +60,18 @@ namespace SadPumpkin.LinkedList
             return null;
         }
 
+        /// <summary>
+        /// Add a new node to the end of the list.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// ILinkedList<int> newList = new LinkedList<int>();
+        /// newList.Insert(5);
+        /// newList.Insert(7);
+        /// </code>
+        /// </example>
+        /// <param name="value">Value to add</param>
+        /// <returns>New node at the end of the list</returns>
         public INode<T> Insert(T value)
         {
             if (Last == null)
@@ -43,6 +91,18 @@ namespace SadPumpkin.LinkedList
             return Last;
         }
 
+        /// <summary>
+        /// Remove the first node that matches the parameter from the list.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// ILinkedList<int> newList = new LinkedList<int>();
+        /// newList.Insert(5);
+        /// newList.Insert(7);
+        /// newList.Remove(7);
+        /// </code>
+        /// </example>
+        /// <param name="value">Value to remove</param>
         public void Remove(T value)
         {
             INode<T> testNode = First;
@@ -80,6 +140,18 @@ namespace SadPumpkin.LinkedList
             }
         }
 
+        /// <summary>
+        /// Remove the provided node from the list.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// ILinkedList<int> newList = new LinkedList<int>();
+        /// INode<int> firstNode = newList.Insert(5);
+        /// INode<int> secondNode = newList.Insert(7);
+        /// newList.Remove(secondNode);
+        /// </code>
+        /// </example>
+        /// <param name="node">Node to remove</param>
         public void Remove(INode<T> node)
         {
             INode<T> testNode = First;
@@ -117,6 +189,18 @@ namespace SadPumpkin.LinkedList
             }
         }
 
+        /// <summary>
+        /// Return a string which contains all current nodes of the list.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// ILinkedList<int> newList = new LinkedList<int>();
+        /// newList.Insert(5);
+        /// newList.Insert(7);
+        /// Console.WriteLine(newList.Print());
+        /// </code>
+        /// </example>
+        /// <returns>Debug string with list contents</returns>
         public string Print()
         {
             StringBuilder sb = new StringBuilder();
