@@ -1,6 +1,7 @@
 using System;
+using System.Text;
 
-namespace BinarySearchTree
+namespace SadPumpkin.BST
 {
     /// <summary>
     /// BST implementation which provides simple operations on a sorted tree.
@@ -8,7 +9,7 @@ namespace BinarySearchTree
     /// <typeparam name="T">Generic type of the values contained in the tree.</typeparam>
     public class BinarySearchTree<T> : IBinarySearchTree<T> where T : IComparable<T>, IEquatable<T>
     {
-        private Node<T> _root = null;
+        private INode<T> _root = null;
         private int _count = 0;
         private int _depth = 0;
 
@@ -26,13 +27,12 @@ namespace BinarySearchTree
         /// Maximum depth of the BST.
         /// </summary>
         public int Depth => _depth;
-        
+
         /// <summary>
         /// Construct a new empty BST.
         /// </summary>
         public BinarySearchTree()
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -41,17 +41,12 @@ namespace BinarySearchTree
         /// <param name="initialValues">Values to add to the BST upon construction.</param>
         public BinarySearchTree(params T[] initialValues)
         {
-            throw new NotImplementedException();
+            foreach (T value in initialValues)
+            {
+                Add(value);
+            }
         }
 
-        /// <summary>
-        /// Balance the BST in order to achieve optimal performance.
-        /// </summary>
-        public void Balance()
-        {
-            
-        }
-        
         /// <summary>
         /// Add a new node to the BST with the given value.
         /// </summary>
@@ -59,7 +54,55 @@ namespace BinarySearchTree
         /// <returns>The newly created node, or null if the provided value already exists in the BST.</returns>
         public INode<T> Add(T value)
         {
-            throw new NotImplementedException();
+            if (_root == null)
+            {
+                _root = new Node<T>(value);
+                _count = 1;
+                _depth = 1;
+                return _root;
+            }
+
+            INode<T> newNode = null;
+            INode<T> parent = _root;
+            do
+            {
+                // No duplicates allowed in the BST
+                if (value.Equals(parent.Value))
+                    break;
+
+                if (value.CompareTo(parent.Value) > 0)
+                {
+                    // Greater than
+                    if (parent.RightChild == null)
+                    {
+                        newNode = parent.RightChild = new Node<T>(value);
+                    }
+                    else
+                    {
+                        parent = parent.RightChild;
+                    }
+                }
+                else
+                {
+                    // Less than
+                    if (parent.LeftChild == null)
+                    {
+                        newNode = parent.LeftChild = new Node<T>(value);
+                    }
+                    else
+                    {
+                        parent = parent.LeftChild;
+                    }
+                }
+            } while (newNode == null);
+
+            if (newNode != null)
+            {
+                _count++;
+                _depth = NodeUtilities.GetDepth(_root);
+            }
+
+            return newNode;
         }
 
         /// <summary>
@@ -68,16 +111,82 @@ namespace BinarySearchTree
         /// <param name="value">Value to remove from the BST.</param>
         public void Remove(T value)
         {
-            throw new NotImplementedException();
+            INode<T> InnerRemove(INode<T> node, T innerValue)
+            {
+                if (node == null)
+                    return null;
+
+                if (node.Value.Equals(innerValue))
+                {
+                    if (node.LeftChild == null)
+                        return node.RightChild;
+                    if (node.RightChild == null)
+                        return node.LeftChild;
+
+                    INode<T> minGreater = NodeUtilities.GetMinimum(node.RightChild);
+                    Remove(minGreater);
+
+                    minGreater.LeftChild = node.LeftChild;
+                    minGreater.RightChild = node.RightChild;
+                    return minGreater;
+                }
+                else if (node.Value.CompareTo(innerValue) < 0)
+                {
+                    node.RightChild = InnerRemove(node.RightChild, innerValue);
+                }
+                else
+                {
+                    node.LeftChild = InnerRemove(node.LeftChild, innerValue);
+                }
+
+                return node;
+            }
+
+            _root = InnerRemove(_root, value);
+            _count = NodeUtilities.GetCount(_root);
+            _depth = NodeUtilities.GetDepth(_root);
         }
 
         /// <summary>
         /// Remove the provided node from the BST.
         /// </summary>
-        /// <param name="node">Node to remove from the BST.</param>
-        public void Remove(INode<T> node)
+        /// <param name="value">Node to remove from the BST.</param>
+        public void Remove(INode<T> value)
         {
-            throw new NotImplementedException();
+            INode<T> InnerRemove(INode<T> node, INode<T> innerValue)
+            {
+                if (node == null)
+                    return null;
+
+                if (node == innerValue)
+                {
+                    if (node.LeftChild == null)
+                        return node.RightChild;
+                    if (node.RightChild == null)
+                        return node.LeftChild;
+
+                    INode<T> minGreater = NodeUtilities.GetMinimum(node.RightChild);
+                    Remove(minGreater);
+
+                    minGreater.LeftChild = node.LeftChild;
+                    minGreater.RightChild = node.RightChild;
+                    return minGreater;
+                }
+                else if (node.Value.CompareTo(innerValue.Value) < 0)
+                {
+                    node.RightChild = InnerRemove(node.RightChild, innerValue);
+                }
+                else
+                {
+                    node.LeftChild = InnerRemove(node.LeftChild, innerValue);
+                }
+
+                return node;
+            }
+
+            _root = InnerRemove(_root, value);
+            _count = NodeUtilities.GetCount(_root);
+            _depth = NodeUtilities.GetDepth(_root);
         }
 
         /// <summary>
@@ -86,7 +195,7 @@ namespace BinarySearchTree
         /// <returns>Node with the current minimum value.</returns>
         public INode<T> Maximum()
         {
-            throw new NotImplementedException();
+            return NodeUtilities.GetMaximum(_root);
         }
 
         /// <summary>
@@ -95,7 +204,7 @@ namespace BinarySearchTree
         /// <returns>Node with the current maximum value.</returns>
         public INode<T> Minimum()
         {
-            throw new NotImplementedException();
+            return NodeUtilities.GetMinimum(_root);
         }
 
         /// <summary>
@@ -104,7 +213,17 @@ namespace BinarySearchTree
         /// <param name="action">Action to invoke on each BST node.</param>
         public void Traverse(Action<T> action)
         {
-            throw new NotImplementedException();
+            void InnerTraverse(INode<T> node, Action<T> innerAction)
+            {
+                if (node == null)
+                    return;
+                // In-order traversal (left->me->right)
+                InnerTraverse(node.LeftChild, innerAction);
+                innerAction(node.Value);
+                InnerTraverse(node.RightChild, innerAction);
+            }
+
+            InnerTraverse(_root, action);
         }
 
         /// <summary>
@@ -114,7 +233,39 @@ namespace BinarySearchTree
         /// <returns>Node corresponding to the provided value.</returns>
         public INode<T> Find(T value)
         {
-            throw new NotImplementedException();
+            INode<T> InnerFind(INode<T> node, T innerValue)
+            {
+                if (node == null)
+                    return null;
+                if (node.Value.Equals(innerValue))
+                    return node;
+                return InnerFind(
+                    node.Value.CompareTo(innerValue) > 0
+                        ? node.LeftChild
+                        : node.RightChild,
+                    innerValue);
+            }
+
+            return InnerFind(_root, value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string Print()
+        {
+            // yuck closure
+            StringBuilder sb = new StringBuilder();
+            void OnNodeTraversed(T value)
+            {
+                if (sb.Length != 0)
+                    sb.Append(" -> ");
+                sb.Append('(').Append(value).Append(')');
+            }
+
+            Traverse(OnNodeTraversed);
+            return sb.ToString();
         }
     }
 }

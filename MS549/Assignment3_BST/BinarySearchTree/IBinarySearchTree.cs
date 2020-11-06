@@ -1,6 +1,6 @@
 using System;
 
-namespace BinarySearchTree
+namespace SadPumpkin.BST
 {
     /// <summary>
     /// BST interface which provides simple operations on a sorted tree.
@@ -24,8 +24,8 @@ namespace BinarySearchTree
         /// <summary>
         /// Remove the provided node from the BST.
         /// </summary>
-        /// <param name="node">Node to remove from the BST.</param>
-        void Remove(INode<T> node);
+        /// <param name="value">Node to remove from the BST.</param>
+        void Remove(INode<T> value);
         
         /// <summary>
         /// Return the node corresponding to the minimum value in the BST.

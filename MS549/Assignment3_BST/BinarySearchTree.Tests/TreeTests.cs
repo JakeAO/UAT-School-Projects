@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace BinarySearchTree.Tests
+namespace SadPumpkin.BST.Tests
 {
     [TestFixture]
     public class TreeTests
@@ -19,7 +19,6 @@ namespace BinarySearchTree.Tests
             BinarySearchTree<int> newList = new BinarySearchTree<int>(5, 6, 11, 9);
 
             Assert.IsNotNull(newList);
-            Assert.AreEqual(5, newList.Root.Value);
             Assert.AreEqual(4, newList.Count);
         }
 
@@ -114,6 +113,71 @@ namespace BinarySearchTree.Tests
         }
 
         [Test]
+        public void remove_value_maintains_order()
+        {
+            IBinarySearchTree<int> newList = new BinarySearchTree<int>();
+
+            newList.Add(15);
+            newList.Add(1);
+            newList.Add(42);
+            newList.Add(7);
+            newList.Add(99);
+            newList.Add(6);
+
+            // yuck closure
+            bool error = false;
+            int? prevValue = null;
+            void Reset()
+            {
+                error = false;
+                prevValue = null;
+            }
+            void OnNodeTraversed(int nodeValue)
+            {
+                if (prevValue.HasValue &&
+                    prevValue >= nodeValue)
+                {
+                    error = true;
+                }
+
+                prevValue = nodeValue;
+            }
+
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(42);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(1);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(99);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(7);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(6);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(15);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+        }
+
+        [Test]
         public void remove_node_reduces_count()
         {
             BinarySearchTree<int> newList = new BinarySearchTree<int>();
@@ -135,6 +199,71 @@ namespace BinarySearchTree.Tests
             newList.Remove(node0);
 
             Assert.AreEqual(0, newList.Count);
+        }
+
+        [Test]
+        public void remove_node_maintains_order()
+        {
+            IBinarySearchTree<int> newList = new BinarySearchTree<int>();
+
+            INode<int> node15 = newList.Add(15);
+            INode<int> node1 = newList.Add(1);
+            INode<int> node42 = newList.Add(42);
+            INode<int> node7 = newList.Add(7);
+            INode<int> node99 = newList.Add(99);
+            INode<int> node6 = newList.Add(6);
+
+            // yuck closure
+            bool error = false;
+            int? prevValue = null;
+            void Reset()
+            {
+                error = false;
+                prevValue = null;
+            }
+            void OnNodeTraversed(int nodeValue)
+            {
+                if (prevValue.HasValue &&
+                    prevValue >= nodeValue)
+                {
+                    error = true;
+                }
+
+                prevValue = nodeValue;
+            }
+
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node42);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node1);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node99);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node7);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node6);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
+
+            Reset();
+            newList.Remove(node15);
+            newList.Traverse(OnNodeTraversed);
+            Assert.IsFalse(error);
         }
 
         [Test]
@@ -221,78 +350,6 @@ namespace BinarySearchTree.Tests
         }
 
         [Test]
-        public void balance_maintains_count()
-        {
-            BinarySearchTree<int> newList = new BinarySearchTree<int>();
-
-            newList.Add(1);
-            newList.Add(2);
-            newList.Add(3);
-            newList.Add(4);
-            newList.Add(5);
-            newList.Add(6);
-
-            Assert.AreEqual(6, newList.Count);
-
-            newList.Balance();
-
-            Assert.AreEqual(6, newList.Count);
-        }
-
-        [Test]
-        public void balance_maintains_order()
-        {
-            BinarySearchTree<int> newList = new BinarySearchTree<int>();
-
-            newList.Add(1);
-            newList.Add(6);
-            newList.Add(7);
-            newList.Add(15);
-            newList.Add(42);
-            newList.Add(99);
-
-            // yuck closure
-            bool error = false;
-            int? prevValue = null;
-            void OnNodeTraversed(int nodeValue)
-            {
-                if (prevValue.HasValue &&
-                    prevValue >= nodeValue)
-                {
-                    error = true;
-                }
-
-                prevValue = nodeValue;
-            }
-
-            newList.Balance();
-            newList.Traverse(OnNodeTraversed);
-
-            Assert.IsFalse(error);
-        }
-
-        [Test]
-        public void balance_reduces_depth_of_linear_tree()
-        {
-            BinarySearchTree<int> newList = new BinarySearchTree<int>();
-
-            newList.Add(1);
-            newList.Add(2);
-            newList.Add(3);
-            newList.Add(4);
-            newList.Add(5);
-            newList.Add(6);
-
-            int originalDepth = newList.Depth;
-            Assert.AreEqual(6, originalDepth);
-
-            newList.Balance();
-
-            int newDepth = newList.Depth;
-            Assert.AreEqual(3, newDepth);
-        }
-
-        [Test]
         public void minimum_returns_lowest_value()
         {
             IBinarySearchTree<int> newList = new BinarySearchTree<int>();
@@ -324,6 +381,19 @@ namespace BinarySearchTree.Tests
             INode<int> returnedNode = newList.Maximum();
 
             Assert.AreEqual(maxNode, returnedNode);
+        }
+
+        [TestCase(new int[0], ExpectedResult = "")]
+        [TestCase(new[] {1}, ExpectedResult = "(1)")]
+        [TestCase(new[] {5, 9}, ExpectedResult = "(5) -> (9)")]
+        [TestCase(new[] {4, 1, 11}, ExpectedResult = "(1) -> (4) -> (11)")]
+        [TestCase(new[] {45, 6, 8, 2}, ExpectedResult = "(2) -> (6) -> (8) -> (45)")]
+        [TestCase(new[] {1, 2, 3, 4, 5}, ExpectedResult = "(1) -> (2) -> (3) -> (4) -> (5)")]
+        public string print_is_accurate(params int[] values)
+        {
+            BinarySearchTree<int> newList = new BinarySearchTree<int>(values);
+
+            return newList.Print();
         }
     }
 }

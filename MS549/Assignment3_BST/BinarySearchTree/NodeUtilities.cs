@@ -1,7 +1,10 @@
 using System;
 
-namespace BinarySearchTree
+namespace SadPumpkin.BST
 {
+    /// <summary>
+    /// Utility methods for acting on BST node objects.
+    /// </summary>
     public static class NodeUtilities
     {
         /// <summary>
@@ -78,6 +81,38 @@ namespace BinarySearchTree
             node = newRoot;
 
             return true;
+        }
+
+        /// <summary>
+        /// Return the node corresponding to the minimum value in a BST.
+        /// </summary>
+        /// <param name="node">Starting node of search.</param>
+        /// <returns>Node containing the minimum value.</returns>
+        public static INode<T> GetMinimum<T>(INode<T> node) where T : IComparable<T>, IEquatable<T>
+        {
+            INode<T> scanner = node;
+            while (scanner.LeftChild != null)
+            {
+                scanner = scanner.LeftChild;
+            }
+
+            return scanner;
+        }
+        
+        /// <summary>
+        /// Return the node corresponding to the maximum value in a BST.
+        /// </summary>
+        /// <param name="node">Starting node of search.</param>
+        /// <returns>Node containing the maximum value.</returns>
+        public static INode<T> GetMaximum<T>(INode<T> node) where T : IComparable<T>, IEquatable<T>
+        {
+            INode<T> scanner = node;
+            while (scanner.RightChild != null)
+            {
+                scanner = scanner.RightChild;
+            }
+
+            return scanner;
         }
     }
 }

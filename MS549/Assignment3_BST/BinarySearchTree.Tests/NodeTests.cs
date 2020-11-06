@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace BinarySearchTree.Tests
+namespace SadPumpkin.BST.Tests
 {
     [TestFixture]
     public class NodeTests

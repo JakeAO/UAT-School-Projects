@@ -1,7 +1,11 @@
 using System;
 
-namespace BinarySearchTree
+namespace SadPumpkin.BST
 {
+    /// <summary>
+    /// BST node implementation which holds a readonly value and links to child nodes.
+    /// </summary>
+    /// <typeparam name="T">Generic type of the values contained in the tree.</typeparam>
     public class Node<T> : INode<T> where T : IComparable<T>, IEquatable<T>
     {
         /// <summary>
