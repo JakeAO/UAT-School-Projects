@@ -1,0 +1,25 @@
+Custom BinarySearchTree
+	Add(), Remove(), and Find() times both wildly vary based on the makeup of the BST. Under ideal circumstances,
+	when the BST is properly balanced, insert/delete/find times are comparable to any other BST (logarithmic time).
+	But, since this BST implementation is not balance-enforcing (e.g. AVL, Red-Black, or other type of balancing),
+	the performance of both insert/delete/find very quickly begin to degrade towards linear time as the BST's structure
+	begins to resemble a LinkedList.
+
+Custom BST vs Custom LinkedList
+	Add()
+		The custom LinkedList is going to win this race every time since it tracks the Tail node, which makes end-insert a constant
+		time operation. Granted, the LinkedList doesn't enforce ordering like the custom BST so it's not a perfect comparison.
+		Ideally, when balanced, the custom BST offers a logarithmic insertion time, but that degrades towards linear time as the
+		BST trends towards a linked-list with no tail tracking. If LinkedList were order-enforcing then the BST would generally
+		perform faster, but both would trend towards similar average and worst-case performance (linear).
+	Remove()/Find()
+		In this case the BST generally performs better since when balanced it offers a logarithmic find/remove time which trends towards
+		linear as the tree becomes fully imbalanced. The custom LinkedList implementation is always linear time since it has to scan
+		through each node starting at the head.
+
+Custom BST vs System.Collections.Generic.SortedSet
+	The main generic BST available in .NET is a Red-Black Tree, which obviously skews performance towards the .NET standard structure.
+	When both trees are perfectly balanced the performance is roughly-comparable, at least in the same order of magnitude, but when the
+	data is randomly added or removed the Red-Black Tree outperforms to an extreme degree (~900% faster for add, ~2800% faster for remove).
+	These results are unsurprising, a raw BST with no self-balancing is rare to find in the wild since there are so many types of
+	empirically better self-balancing tree data structures available.
