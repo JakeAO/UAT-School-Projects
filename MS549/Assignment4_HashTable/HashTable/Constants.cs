@@ -2,6 +2,9 @@ namespace SadPumpkin.HashTable
 {
     public class Constants
     {
+        /// <summary>
+        /// Static collection of the first few dozen prime numbers above 5.
+        /// </summary>
         public static readonly int[] PRIME_NUMBERS =
         {
             7,
