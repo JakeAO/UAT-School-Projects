@@ -280,7 +280,7 @@ namespace SadPumpkin.HashTable
         /// <returns>Bounded index into table array.</returns>
         private int GetTableIndex(int hashCode)
         {
-            return Math.Abs(hashCode) % _table.Length;
+            return Math.Abs(hashCode % _table.Length);
         }
 
         /// <summary>

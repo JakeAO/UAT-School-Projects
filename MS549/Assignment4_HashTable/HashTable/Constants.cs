@@ -7,6 +7,8 @@ namespace SadPumpkin.HashTable
         /// </summary>
         public static readonly int[] PRIME_NUMBERS =
         {
+            3,
+            5,
             7,
             11,
             19,

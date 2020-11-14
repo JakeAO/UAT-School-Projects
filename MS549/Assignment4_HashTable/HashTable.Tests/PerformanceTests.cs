@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
+using SadPumpkin.HashTable.CollisionResolver;
+using SadPumpkin.HashTable.HashGenerators;
 
 namespace SadPumpkin.HashTable.Tests
 {
@@ -17,13 +19,47 @@ namespace SadPumpkin.HashTable.Tests
         [TestCase(1000, TEST_COUNT)]
         [TestCase(10000, TEST_COUNT/2)]
         [TestCase(100000, TEST_COUNT/10)]
-        public void insert_hash_table(int insertCount, int averageAcross)
+        public void insert_hash_table_linear(int insertCount, int averageAcross)
         {
             long[] results = new long[averageAcross];
             Stopwatch stopwatch = new Stopwatch();
             for (int i = 0; i < averageAcross; i++)
             {
-                IHashTable<int, object> newTable = new HashTable<int, object>();
+                IHashTable<int, object> newTable = new HashTable<int, object>(
+                    13, 0.6f,
+                    new StandardHashGenerator<int>(),
+                    new LinearProbingResolver());
+
+                stopwatch.Restart();
+                for (int j = 0; j < insertCount; j++)
+                {
+                    int randValue = RANDOM.Next();
+                    newTable.Insert(randValue, randValue);
+                }
+
+                stopwatch.Stop();
+
+                results[i] = stopwatch.ElapsedTicks;
+            }
+
+            double avg = results.Average();
+            Assert.Pass($"{insertCount} inserts: {avg} ticks");
+        }
+
+        [TestCase(100, TEST_COUNT)]
+        [TestCase(1000, TEST_COUNT)]
+        [TestCase(10000, TEST_COUNT/2)]
+        [TestCase(100000, TEST_COUNT/10)]
+        public void insert_hash_table_quadratic(int insertCount, int averageAcross)
+        {
+            long[] results = new long[averageAcross];
+            Stopwatch stopwatch = new Stopwatch();
+            for (int i = 0; i < averageAcross; i++)
+            {
+                IHashTable<int, object> newTable = new HashTable<int, object>(
+                    13, 0.6f,
+                    new StandardHashGenerator<int>(),
+                    new QuadraticProbingResolver());
 
                 stopwatch.Restart();
                 for (int j = 0; j < insertCount; j++)
@@ -138,9 +174,47 @@ namespace SadPumpkin.HashTable.Tests
         [TestCase(1000, TEST_COUNT)]
         [TestCase(10000, TEST_COUNT/2)]
         [TestCase(100000, TEST_COUNT/10)]
-        public void retrieve_hash_table(int retrieveCount, int averageAcross)
+        public void retrieve_hash_table_linear(int retrieveCount, int averageAcross)
         {
-            IHashTable<int, object> newTable = new HashTable<int, object>();
+            IHashTable<int, object> newTable = new HashTable<int, object>(
+                13, 0.6f,
+                new StandardHashGenerator<int>(),
+                new LinearProbingResolver());
+            for (int i = 0; i < 1000; i++)
+            {
+                int randValue = RANDOM.Next();
+                newTable.Insert(randValue, randValue);
+            }
+            
+            long[] results = new long[averageAcross];
+            Stopwatch stopwatch = new Stopwatch();
+            for (int i = 0; i < averageAcross; i++)
+            {
+                stopwatch.Restart();
+                for (int j = 0; j < retrieveCount; j++)
+                {
+                    newTable.Retrieve(RANDOM.Next());
+                }
+
+                stopwatch.Stop();
+
+                results[i] = stopwatch.ElapsedTicks;
+            }
+
+            double avg = results.Average();
+            Assert.Pass($"{retrieveCount} inserts: {avg} ticks");
+        }
+
+        [TestCase(100, TEST_COUNT)]
+        [TestCase(1000, TEST_COUNT)]
+        [TestCase(10000, TEST_COUNT/2)]
+        [TestCase(100000, TEST_COUNT/10)]
+        public void retrieve_hash_table_quadratic(int retrieveCount, int averageAcross)
+        {
+            IHashTable<int, object> newTable = new HashTable<int, object>(
+                13, 0.6f,
+                new StandardHashGenerator<int>(),
+                new QuadraticProbingResolver());
             for (int i = 0; i < 1000; i++)
             {
                 int randValue = RANDOM.Next();

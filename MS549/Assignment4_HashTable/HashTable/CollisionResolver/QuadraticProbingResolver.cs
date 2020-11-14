@@ -17,7 +17,7 @@ namespace SadPumpkin.HashTable.CollisionResolver
         {
             int newHash = originalHash;
             if (misses > 0)
-                newHash += (int) Math.Pow(misses, 2);
+                newHash = unchecked(newHash + (int) Math.Pow(misses, 2));
             return newHash;
         }
     }

@@ -13,7 +13,7 @@ namespace SadPumpkin.HashTable.CollisionResolver
         /// <returns>Resolved HashCode</returns>
         public int ResolveHash(int originalHash, int misses = 1)
         {
-            return originalHash + misses;
+            return unchecked(originalHash + misses);
         }
     }
 }

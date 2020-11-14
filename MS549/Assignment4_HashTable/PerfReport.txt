@@ -1,0 +1,35 @@
+Custom Chained HashTable vs Custom Open HashTable
+    Insertion times for the custom HashTable implementations are approaching constant like all
+    hash tables should be, this time of course is greatly dependent upon table size and the type
+    of elements being added. The insertion time of the chain-based HashTable is notably worse
+    than the HashTable using open addressing, which is very likely due to the cost of allocating
+    (and reallocating) hundreds/thousands of LinkedLists internally. The insertion performance
+    of the chain-based HashTable could likely be improved by pre-allocating all of the LinkedLists
+    in the table, though this would result in a higher initial memory footprint.
+
+    Retrieval times for custom HashTable implementations are still approaching constant, but inverted
+    in their relative performance from insertion. The chain-based table which at this point has already
+    allocated all of the LinkedLists it would need, and since we're attempting to retrieve a random value,
+    retrieval only has to calculate a hash, confirm that a LinkedList exists, and then grab the matching
+    key from the LinkedList. The open-addressed custom table has to do many more comparisons in an
+    attempt to retrieve an element, which may or may not lead to extra boxing depending on the
+    key type being used in the table.
+
+Linear Probing vs Quadratic Probing
+    Neither Linear nor Quadratic probing show much of a performance advantage over the other in the
+    performance tests performed. Linear probing performs very slightly better in both insertion and
+    retrieval time tests, which is likely due to inserting random integers and their trend towards
+    even distribution already.
+
+Custom HashTables vs .NET Standard HashTable/Dictionary
+    As expected, the .NET standard HashTable and Dictionary structure perform wildly better than these
+    custom implementations. The .NET Dictionary, which performs the best across the board, uses an array
+    of entries which both hold values and function as a linked-list without the need for an extra data
+    structure. This saves on collision resolution, since the array already functions as a linked-list
+    internally and the insert method can just immediately move to the next node. The .NET HashTable
+    also operates much faster than the custom implementations, though not that much faster than the
+    custom chain-table implementation of retrieve. The .NET HashTable uses double hashing open addressing
+    and caches off the intial, current, and step values for the hash so that it can save time stepping
+    between buckets when there's a collision. It also uses a bitwise flagging and look-behind system
+    to walk the array and confirm a key doesn't already exist, but then insert the new key into the 
+    array at the first empty slot it encountered.
