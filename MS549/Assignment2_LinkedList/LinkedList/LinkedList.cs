@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace SadPumpkin.LinkedList
 {
@@ -20,16 +21,16 @@ namespace SadPumpkin.LinkedList
         /// The number of nodes in the list.
         /// </summary>
         public int Count { get; private set; }
-        
+
         /// <summary>
         /// The first node in the list.
         /// </summary>
         public INode<T> First { get; private set; }
-        
+
         /// <summary>
         /// The last node in the list.
         /// </summary>
-        public INode<T> Last { get; private set; }
+        public INode<T> Last => First?.Previous;
 
         /// <summary>
         /// Return the first node which contains the provided value.
@@ -46,8 +47,11 @@ namespace SadPumpkin.LinkedList
         /// <returns>First node which matches value</returns>
         public INode<T> Find(T value)
         {
+            if (First == null)
+                return null;
+
             INode<T> testNode = First;
-            while (testNode != null)
+            do
             {
                 if (testNode.Value.Equals(value))
                 {
@@ -55,7 +59,7 @@ namespace SadPumpkin.LinkedList
                 }
 
                 testNode = testNode.Next;
-            }
+            } while (testNode != First);
 
             return null;
         }
@@ -74,21 +78,30 @@ namespace SadPumpkin.LinkedList
         /// <returns>New node at the end of the list</returns>
         public INode<T> Insert(T value)
         {
-            if (Last == null)
+            INode<T> newNode = new Node<T>(value);
+
+            if (First == null)
             {
                 // List is empty
-                First = Last = new Node<T>(value);
+                First = newNode;
+                First.Next = newNode;
+                First.Previous = newNode;
+                
+                Count = 1;
             }
             else
             {
                 // Insert after current last
-                Last.Next = new Node<T>(value);
-                Last.Next.Previous = Last;
-                Last = Last.Next;
+                Last.Next = newNode;
+                newNode.Previous = Last;
+
+                First.Previous = newNode;
+                newNode.Next = First;
+                
+                Count++;
             }
 
-            Count++;
-            return Last;
+            return newNode;
         }
 
         /// <summary>
@@ -105,31 +118,21 @@ namespace SadPumpkin.LinkedList
         /// <param name="value">Value to remove</param>
         public void Remove(T value)
         {
+            if (First == null)
+                return;
+
             INode<T> testNode = First;
-            while (testNode != null)
+            do
             {
                 if (testNode.Value.Equals(value))
                 {
-                    if (testNode.Previous == null)
-                    {
-                        // Update first node
-                        First = testNode.Next;
-                    }
-                    else
-                    {
-                        // Stitch together the nodes on either side of the removed node
-                        testNode.Previous.Next = testNode.Next;
-                    }
+                    // Stitch together the nodes on either side of the removed node
+                    testNode.Previous.Next = testNode.Next;
+                    testNode.Next.Previous = testNode.Previous;
 
-                    if (testNode.Next == null)
+                    if (testNode == First)
                     {
-                        // Update last node
-                        Last = testNode.Previous;
-                    }
-                    else
-                    {
-                        // Stitch together the nodes on either side of the removed node
-                        testNode.Next.Previous = testNode.Previous;
+                        First = testNode.Next;
                     }
 
                     Count--;
@@ -137,7 +140,7 @@ namespace SadPumpkin.LinkedList
                 }
 
                 testNode = testNode.Next;
-            }
+            } while (testNode != First);
         }
 
         /// <summary>
@@ -154,31 +157,21 @@ namespace SadPumpkin.LinkedList
         /// <param name="node">Node to remove</param>
         public void Remove(INode<T> node)
         {
+            if (First == null)
+                return;
+
             INode<T> testNode = First;
-            while (testNode != null)
+            do
             {
                 if (testNode == node)
                 {
-                    if (testNode.Previous == null)
-                    {
-                        // Update first node
-                        First = testNode.Next;
-                    }
-                    else
-                    {
-                        // Stitch together the nodes on either side of the removed node
-                        testNode.Previous.Next = testNode.Next;
-                    }
+                    // Stitch together the nodes on either side of the removed node
+                    testNode.Previous.Next = testNode.Next;
+                    testNode.Next.Previous = testNode.Previous;
 
-                    if (testNode.Next == null)
+                    if (testNode == First)
                     {
-                        // Update last node
-                        Last = testNode.Previous;
-                    }
-                    else
-                    {
-                        // Stitch together the nodes on either side of the removed node
-                        testNode.Next.Previous = testNode.Previous;
+                        First = testNode.Next;
                     }
 
                     Count--;
@@ -186,6 +179,90 @@ namespace SadPumpkin.LinkedList
                 }
 
                 testNode = testNode.Next;
+            } while (testNode != First);
+        }
+
+        /// <summary>
+        /// Remove all nodes from the list.
+        /// </summary>
+        public void Clear()
+        {
+            Count = 0;
+            First = null;
+        }
+        
+        /// <summary>
+        /// Swap the positions of two nodes in the list.
+        /// </summary>
+        /// <param name="nodeA">First node to swap</param>
+        /// <param name="nodeB">Second node to swap</param>
+        public void Swap(INode<T> nodeA, INode<T> nodeB)
+        {
+            if (nodeA == null || nodeB == null)
+                throw new InvalidOperationException("Cannot swap null nodes.");
+
+            if (nodeA.Previous == nodeB)
+            {
+                if (nodeB.Previous != nodeA)
+                {
+                    Swap(nodeB, nodeA);
+                }
+
+                return;
+            }
+
+            // if (First == null)
+            //     throw new InvalidOperationException("Cannot swap nodes not contained in the list.");
+
+            // bool foundA = false, foundB = false;
+            // INode<T> testNode = First;
+            // do
+            // {
+            //     if (testNode == nodeA)
+            //         foundA = true;
+            //
+            //     if (testNode == nodeB)
+            //         foundB = true;
+            //
+            //     if (foundA && foundB)
+            //         break;
+            //
+            //     testNode = testNode.Next;
+            // } while (testNode != First);
+            //
+            // if (!foundA || !foundB)
+            //     throw new InvalidOperationException("Cannot swap nodes not contained in the list.");
+
+            INode<T> pa = nodeA.Previous, sb = nodeB.Next;
+
+            // remove a from list
+            pa.Next = nodeA.Next;
+            pa.Next.Previous = pa;
+
+            // remove b from list
+            sb.Previous = nodeB.Previous;
+            sb.Previous.Next = sb;
+
+            // add a before sb
+            nodeA.Previous = sb.Previous;
+            nodeA.Next = sb;
+            nodeA.Previous.Next = nodeA;
+            nodeA.Next.Previous = nodeA;
+
+            // add b after pa
+            nodeB.Next = pa.Next;
+            nodeB.Previous = pa;
+            nodeB.Previous.Next = nodeB;
+            nodeB.Next.Previous = nodeB;
+
+            // update first
+            if (nodeA == First)
+            {
+                First = nodeB;
+            }
+            else if (nodeB == First)
+            {
+                First = nodeA;
             }
         }
 
@@ -203,18 +280,20 @@ namespace SadPumpkin.LinkedList
         /// <returns>Debug string with list contents</returns>
         public string Print()
         {
+            if (First == null)
+                return string.Empty;
+
             StringBuilder sb = new StringBuilder();
 
             INode<T> testNode = First;
-            while (testNode != null)
+            do
             {
-                sb.Append(testNode.Previous == null ? "|-- " : "--> ")
-                    .Append(testNode)
-                    .Append(testNode.Next == null ? " --|" : " -->")
-                    .AppendLine();
+                sb.Append('[').Append(testNode.Value).Append(']');
+                if (testNode.Next != First)
+                    sb.Append('-');
 
                 testNode = testNode.Next;
-            }
+            } while (testNode != First);
 
             return sb.ToString();
         }

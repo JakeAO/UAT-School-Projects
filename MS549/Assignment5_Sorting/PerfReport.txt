@@ -1,0 +1,24 @@
+Bubble, Insertion, and Selection Sort
+    As expected, these three sorts perform fairly similarly to one another
+    across the different types of collections. BubbleSort is always the slowest
+    since it relies on n^2 comparisons to ensure the collection is sorted.
+    InsertionSort and SelectionSort swap relative performance between my
+    custom LinkedList implementation and the two standard .NET implementations
+    (LinkedList and List). On collection types which have mutable elements (List 
+    is backed by a mutable array, LinkedList nodes have mutable value), both 
+    sorts operate roughly in the same time. The custom LinkedList, which uses
+    nodes that have immutable values, suffers from far worse performance when
+    using InsertionSort due to the need repeatedly swap nodes and manage their
+    references.
+
+'Standard' Sort
+    .NET doesn't exactly have a standard sort used across all collections like the 
+    assignment asks for, but the closest thing is IntroSort used by ArrayList and 
+    List. For the performance tests of this IntroSort, which is meant to be used
+    on randomly-accessible collections due to its basis in QuickSort, the two
+    LinkedList implementations had to be converted to IEnumerable, and subsequently
+    Arrays, which decreased the ideal performance case and added unwanted allocations.
+    Even so, the IntroSort is by a vast margin the fastest sort available for
+    random data. The only time when IntroSort is slower is when the collection size
+    is extremely small, even accounting for the cost of allocation and extra
+    iteration required to convert the LinkedLists into Arrays in order to use it.

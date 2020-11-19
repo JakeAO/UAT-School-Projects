@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace SadPumpkin.LinkedList.Tests
 {
@@ -226,15 +227,127 @@ namespace SadPumpkin.LinkedList.Tests
             newList.Insert(6);
 
             INode<int> testNode = newList.First;
-            while (testNode != null)
+            do
             {
-                if (testNode.Next != null)
-                {
-                    Assert.Less(testNode.Value, testNode.Next.Value);
-                }
+                Assert.Less(testNode.Value, testNode.Next.Value);
 
                 testNode = testNode.Next;
-            }
+            } while (testNode.Next != newList.First);
+        }
+
+        [Test]
+        public void alter_root_fails_given_null()
+        {
+            ILinkedList<int> listA = new LinkedList<int>();
+            INode<int> validNode = listA.Insert(5);
+            
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(null, validNode));
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(validNode, null));
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(null, null));
+        }
+
+        [Test]
+        public void swap_fails_given_invalid()
+        {
+            ILinkedList<int> listA = new LinkedList<int>();
+            listA.Insert(1);
+            INode<int> validNode = listA.Insert(2);
+            listA.Insert(3);
+
+            INode<int> invalidNode = new Node<int>(4);
+
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(validNode, invalidNode));
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(invalidNode, validNode));
+            Assert.Throws<InvalidOperationException>(() => listA.Swap(invalidNode, invalidNode));
+        }
+
+        [Test]
+        public void alter_root_succeeds_given_valid()
+        {
+            ILinkedList<int> listA = new LinkedList<int>();
+            INode<int> first = listA.Insert(1);
+            listA.Insert(2);
+            INode<int> last = listA.Insert(3);
+
+            listA.Swap(first, last);
+
+            Assert.AreEqual(last, listA.First);
+            Assert.AreEqual(first, listA.Last);
+        }
+
+        [Test]
+        public void swap_maintains_count()
+        {
+            ILinkedList<int> listA = new LinkedList<int>();
+            listA.Insert(1);
+            INode<int> nodeA = listA.Insert(2);
+            listA.Insert(3);
+            INode<int> nodeB = listA.Insert(4);
+            listA.Insert(5);
+            listA.Insert(6);
+
+            Assert.AreEqual(6, listA.Count);
+
+            listA.Swap(nodeA, nodeB);
+
+            Assert.AreEqual(6, listA.Count);
+        }
+
+        [Test]
+        public void clear_removes_first()
+        {
+            ILinkedList<int> newList = new LinkedList<int>();
+
+            newList.Insert(1);
+            newList.Insert(2);
+            newList.Insert(3);
+            newList.Insert(4);
+            newList.Insert(5);
+            newList.Insert(6);
+            
+            Assert.IsNotNull(newList.First);
+            
+            newList.Clear();
+            
+            Assert.IsNull(newList.First);
+        }
+
+        [Test]
+        public void clear_removes_last()
+        {
+            ILinkedList<int> newList = new LinkedList<int>();
+
+            newList.Insert(1);
+            newList.Insert(2);
+            newList.Insert(3);
+            newList.Insert(4);
+            newList.Insert(5);
+            newList.Insert(6);
+            
+            Assert.IsNotNull(newList.Last);
+            
+            newList.Clear();
+            
+            Assert.IsNull(newList.Last);
+        }
+
+        [Test]
+        public void clear_sets_count_to_zero()
+        {
+            ILinkedList<int> newList = new LinkedList<int>();
+
+            newList.Insert(1);
+            newList.Insert(2);
+            newList.Insert(3);
+            newList.Insert(4);
+            newList.Insert(5);
+            newList.Insert(6);
+            
+            Assert.AreEqual(6, newList.Count);
+            
+            newList.Clear();
+            
+            Assert.AreEqual(0, newList.Count);
         }
     }
 }

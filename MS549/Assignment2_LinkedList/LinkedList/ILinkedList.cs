@@ -88,6 +88,18 @@
         void Remove(INode<T> node);
 
         /// <summary>
+        /// Remove all nodes from the list.
+        /// </summary>
+        void Clear();
+        
+        /// <summary>
+        /// Swap the positions of two nodes in the list.
+        /// </summary>
+        /// <param name="nodeA">First node to swap</param>
+        /// <param name="nodeB">Second node to swap</param>
+        void Swap(INode<T> nodeA, INode<T> nodeB);
+        
+        /// <summary>
         /// Return a string which contains all current nodes of the list.
         /// </summary>
         /// <example>
