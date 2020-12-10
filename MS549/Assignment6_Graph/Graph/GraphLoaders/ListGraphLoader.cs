@@ -1,32 +1,30 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using SadPumpkin.Graph.Components;
 
 namespace SadPumpkin.Graph.GraphLoaders
 {
-    public class ListGraphLoader<TValue, TWeight> : IGraphLoader<TValue, TWeight>
+    /// <summary>
+    /// Graph content loading object which sources its data from a collection of nodes and corresponding edges.
+    /// </summary>
+    /// <typeparam name="TValue">Type contained in each vertex/node.</typeparam>
+    /// <typeparam name="TWeight">Type of weight assigned to each edge.</typeparam>
+    public class ListGraphLoader<TValue, TWeight> : IGraphLoader<TValue, TWeight> where TWeight : IEquatable<TWeight>, IComparable<TWeight>
     {
+        /// <summary>
+        /// Collection of vertices/nodes to fill out the Graph.
+        /// </summary>
         public IReadOnlyCollection<INode<TValue>> GetNodes { get; }
+        
+        /// <summary>
+        /// Collection of edges to fill out the Graph.
+        /// </summary>
         public IReadOnlyCollection<IEdge<TValue, TWeight>> GetEdges { get; }
 
-        public ListGraphLoader(IReadOnlyCollection<INode<TValue>> nodes, IReadOnlyCollection<IEdge<TValue, TWeight>> edges)
-        {
-            GetNodes = new List<INode<TValue>>(nodes);
-            GetEdges = new List<IEdge<TValue, TWeight>>(edges);
-        }
-
-        public ListGraphLoader(IReadOnlyDictionary<INode<TValue>, IReadOnlyCollection<IEdge<TValue, TWeight>>> nodesToEdges)
-        {
-            GetNodes = new List<INode<TValue>>(nodesToEdges.Keys);
-            GetEdges = nodesToEdges.Values.SelectMany(x => x).ToArray();
-        }
-
-        public ListGraphLoader(IReadOnlyCollection<(INode<TValue> Node, IReadOnlyCollection<IEdge<TValue, TWeight>> Edges)> nodesToEdges)
-        {
-            GetNodes = new List<INode<TValue>>(nodesToEdges.Select(x => x.Node));
-            GetEdges = nodesToEdges.SelectMany(x => x.Edges).ToArray();
-        }
-
+        /// <summary>
+        /// Create a GraphLoader based on the provided collection of nodes/edges.
+        /// </summary>
+        /// <param name="valuesToEdges">Collection of nodes and edges to build from.</param>
         public ListGraphLoader(IReadOnlyDictionary<TValue, IReadOnlyCollection<(TValue Value, TWeight Weight)>> valuesToEdges)
         {
             var nodes = new List<INode<TValue>>(valuesToEdges.Count);

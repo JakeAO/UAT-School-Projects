@@ -1,0 +1,258 @@
+States' Capitals to Adjacent States' Capitals
+
+Olympia, WA
+ -> Salem, OR (154)
+ -> Boise, ID (627)
+Salem, OR
+ -> Olympia, WA (154)
+ -> Boise, ID (476)
+ -> Sacramento, CA (536)
+ -> Carson City, NV (675)
+Sacramento, CA
+ -> Salem, OR (536)
+ -> Carson City, NV (130)
+ -> Phoenix, AZ (756)
+Boise, ID
+ -> Olympia, WA (627)
+ -> Salem, OR (476)
+ -> Carson City, NV (551)
+ -> Helena, MT (488)
+ -> Cheyenne, WY (794)
+ -> Salt Lake City, UT (339)
+Carson City, NV
+ -> Salem, OR (675)
+ -> Boise, ID (551)
+ -> Salt Lake City, UT (546)
+ -> Phoenix, AZ (732)
+ -> Sacramento, CA (130)
+Salt Lake City, UT
+ -> Carson City, NV (546)
+ -> Boise, ID (339)
+ -> Cheyenne, WY (440)
+ -> Denver, CO (518)
+ -> Phoenix, AZ (663)
+Phoenix, AZ
+ -> Sacramento, CA (756)
+ -> Carson City, NV (732)
+ -> Salt Lake City, UT (663)
+ -> Santa Fe, NM (481)
+Helena, MT
+ -> Boise, ID (488)
+ -> Cheyenne, WY (687)
+ -> Bismarck, ND (613)
+ -> Pierre, SD (803)
+Cheyenne, WY
+ -> Boise, ID (794)
+ -> Helena, MT (687)
+ -> Pierre, SD (464)
+ -> Lincoln, NE (442)
+ -> Denver, CO (100)
+ -> Salt Lake City, UT (440)
+Denver, CO
+ -> Salt Lake City, UT (518)
+ -> Cheyenne, WY (100)
+ -> Lincoln, NB (484)
+ -> Topeka, KS (541)
+ -> Oklahoma City, OK (630)
+ -> Santa Fe, NM (358)
+Santa Fe, NM
+ -> Phoenix, AZ (481)
+ -> Denver, CO (358)
+ -> Oklahoma City, OK (586)
+ -> Austin, TX (688)
+Mismarck, ND
+ -> Helena, MT (613)
+ -> Pierre, SD (210)
+ -> Saint Paul, MN (435)
+Pierre, SD
+ -> Helena, MT (803)
+ -> Bismarck, ND (210)
+ -> Saint Paul, MN (399)
+ -> Des Moines, IA (502)
+ -> Lincoln, NB (413)
+ -> Cheyenne, WY (464)
+Lincoln, NE
+ -> Pierre, SD (413)
+ -> Des Moines, IA (189)
+ -> Jefferson City, MO (356)
+ -> Topeka, KS (168)
+ -> Denver, CO (484)
+ -> Cheyenne, WY (442)
+Topeka, KS
+ -> Lincoln, NE (168)
+ -> Jefferson City, MO (204)
+ -> Oklahoma City, OK (297)
+ -> Denver, CO (541)
+Oklahoma City, OK
+ -> Topeka, KS (297)
+ -> Jefferson City, MO (420)
+ -> Little Rock, AR (366)
+ -> Austin, TX (388)
+ -> Santa Fe, NM (586)
+ -> Denver, CO (630)
+Austin, TX
+ -> Santa Fe, NM (688)
+ -> Oklahoma City, OK (388)
+ -> Little Rock, AR (514)
+ -> Baton Rouge, LA (429)
+Saint Paul, MN
+ -> Bismarck, ND (438)
+ -> Pierre, SD (399)
+ -> Des Moines, IA (300)
+ -> Madison, WI (259)
+Des Moines, IA
+ -> Saint Paul, MN (300)
+ -> Pierre, SD (502)
+ -> Lincoln, NE (189)
+ -> Jefferson City, MO (255)
+ -> Springfield, IL (299)
+ -> Madison, WI (293)
+Jefferson City, MO
+ -> Des Moines, IA (255)
+ -> Lincoln, NE (356)
+ -> Topeka, KS (204)
+ -> Oklahoma City, OK (297)
+ -> Little Rock, AR (344)
+ -> Nashville, TN (509)
+ -> Frankfort, KY () // No land route w/o entering IL
+ -> Springfield, IL (192)
+Little Rock, AR
+ -> Jefferson City, MO (344)
+ -> Oklahoma City, OK (366)
+ -> Austin, TX (514)
+ -> Baton Rouge, LA (361)
+ -> Jackson, MS (267)
+ -> Nashville, TN (349)
+Baton Rouge, LA
+ -> Austin, TX (429)
+ -> Little Rock, AR (361)
+ -> Jackson, MS (160)
+Madison, WI
+ -> Saint Paul, MN (259)
+ -> Des Moines, IA (293)
+ -> Springfield, IL (265)
+ -> Lansing, MI (619)
+Springfield, IL
+ -> Madison, WI (265)
+ -> Des Moines, IA (299)
+ -> Jefferson City, MO (192)
+ -> Frankfort, KY (376)
+ -> Indianapolis, IN (209)
+Jackson, MS
+ -> Baton Rouge, LA (160)
+ -> Little Rock, AR (267)
+ -> Nashville, TN (415)
+ -> Montgomery, AL (243)
+Lansing, MI
+ -> Madison, WI (619)
+ -> Indianapolis, IN (255)
+ -> Colombus, OH (254)
+Indianapolis, IN
+ -> Lansing, MI (255)
+ -> Springfield, IL (209)
+ -> Frankfort, KY (166)
+ -> Columbus, OH (175)
+Frankfork, KY
+ -> Indianapolis, IN (166)
+ -> Springfield, IL (376)
+ -> Jefferson City, MO () // No land route w/o entering IL
+ -> Nashville, TN (210)
+ -> Richmond, VA (557)
+ -> Charleston, WV (197)
+ -> Columbus, OH (186)
+Nashville, TN
+ -> Frankfort, KY (210)
+ -> Jefferson City, MO (509)
+ -> Little Rock, AR (349)
+ -> Jackson, MS (415)
+ -> Montgomery, AL (280)
+ -> Atlanta, GA (248)
+ -> Raleigh, NC (539)
+ -> Richmond, VA (614)
+Montgomery, AL
+ -> Jackson, MS (243)
+ -> Nashville, TN (280)
+ -> Atlanta, GA (161)
+ -> Tallahassee, FL (211)
+Columbus, OH
+ -> Lansing, MI (254)
+ -> Indianapolis, IN (175)
+ -> Frankfort, KY (186)
+ -> Charleston, WV (162)
+ -> Harrisburg, PA (422)
+Atlanta, GA
+ -> Montgomery, AL (161)
+ -> Nashville, TN (248)
+ -> Columbia, SC (212)
+ -> Tallahassee, FL (273)
+Tallahassee, FL
+ -> Montgomery, AL (211)
+ -> Atlanta, GA (273)
+Columbia, SC
+ -> Atlanta, GA (212)
+ -> Raleigh, NC (227)
+Raleigh, NC
+ -> Columbia, SC (227)
+ -> Nashville, TN (539)
+ -> Richmond, VA (170)
+Richmond, VA
+ -> Raleigh, NC (170)
+ -> Nashville, TN (614)
+ -> Frankfort, KY (557)
+ -> Charleston, WV (317)
+ -> Annapolis, MD (143)
+Charleston, WV
+ -> Columbus, OH (162)
+ -> Harrisburg, PN (364)
+ -> Annapolis, MD (386)
+ -> Richmond, VA (317)
+ -> Frankfort, KY (197)
+Annapolis, MD
+ -> Richmond, VA (143)
+ -> Charleston, WV (386)
+ -> Harrisburg, PN (112)
+ -> Dover, DE (64)
+Dover, DE
+ -> Annapolis, MD (64)
+ -> Harrisburg, PA (129)
+ -> Trenton, NJ (117)
+Harrisburg, PA
+ -> Columbus, OH (422)
+ -> Charleston, WV (364)
+ -> Annapolis, MD (112)
+ -> Dover, DE (129)
+ -> Trenton, NJ (127)
+ -> Albany, NY (298)
+Trenton, NJ
+ -> Dover, DE (117)
+ -> Harrisburg, PA (127)
+ -> Albany, NY (205)
+Albany, NY
+ -> Harrisburg, PA (298)
+ -> Trenton, NJ (205)
+ -> Hartford, CT (122)
+ -> Boston, MA (170)
+ -> Montpelier, VT (158)
+Hartford, CT
+ -> Albany, NY (122)
+ -> Boston, MA (101)
+ -> Providence, RI (86)
+Providence, RI
+ -> Hartford, CT (86)
+ -> Boston, MA (50)
+Boston, MA
+ -> Hartford, CT (101)
+ -> Providence, RI (50)
+ -> Albany, NY (170)
+ -> Montpelier, VT (225)
+ -> Concord, NH (67)
+Montpelier, VT
+ -> Albany, NY (158)
+ -> Boston, MA (225)
+ -> Concord, NH (118)
+Concord, NH
+ -> Montpelier, VT (118)
+ -> Boston, MA (67)
+ -> Augusta, ME (164)
+Augusta, ME
+ -> Concord, NH (164)

@@ -1,4 +1,14 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=D_003A_005CJAKE_005CDocuments_005CUAT_002DSchool_002DProjects_005CMS549_005CAssignment6_005FGraph_005CComparisonTests_005CSatsuma_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="D:\JAKE\Documents\UAT-School-Projects\MS549\Assignment6_Graph\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b27a5189_002D4a33_002D4e12_002D9f72_002D68388f3a6ed2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Graph.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="D:\JAKE\Documents\UAT-School-Projects\MS549\Assignment6_Graph\Graph.Tests" Presentation="&amp;lt;Graph.Tests&amp;gt;" /&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="D:\JAKE\Documents\UAT-School-Projects\MS549\Assignment6_Graph\Graph.Tests" Presentation="&amp;lt;Graph.Tests&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0FE9EE7F-9487-4BAC-BAC7-C0F3570747E6::.NETFramework,Version=v4.8::PerformanceTests.QuickGraphTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0FE9EE7F-9487-4BAC-BAC7-C0F3570747E6::.NETFramework,Version=v4.8::PerformanceTests.CustomGraphTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
