@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 using QuickGraph;
@@ -8,11 +10,13 @@ namespace PerformanceTests
     [TestFixture]
     public class QuickGraphTests
     {
+        private const int SPEED_TEST_COUNT = 10;
+
         private const char EXAMPLE_START = 's';
         private const char EXAMPLE_END = 't';
-        private const string CAPITALS_START = Constants.ME;
-        private const string CAPITALS_END = Constants.CA;
-        
+        private const string CAPITALS_START = Constants.WA;
+        private const string CAPITALS_END = Constants.FL;
+
         private class WeightedEdge<T> : Edge<T>
         {
             public double Weight { get; }
@@ -61,6 +65,27 @@ namespace PerformanceTests
         }
 
         [Test]
+        public void example_graph_depth_search_speed_test()
+        {
+            var graph = GetExampleGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.TreeDepthFirstSearch(EXAMPLE_START)
+                    (EXAMPLE_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
+        }
+
+        [Test]
         public void example_graph_breadth_search()
         {
             var graph = GetExampleGraph();
@@ -80,6 +105,27 @@ namespace PerformanceTests
         }
 
         [Test]
+        public void example_graph_breadth_search_speed_test()
+        {
+            var graph = GetExampleGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.TreeBreadthFirstSearch(EXAMPLE_START)
+                    (EXAMPLE_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
+        }
+
+        [Test]
         public void example_graph_dijkstra_search()
         {
             var graph = GetExampleGraph();
@@ -96,6 +142,27 @@ namespace PerformanceTests
             Assert.IsTrue(arrayResult.First().Source.Equals(EXAMPLE_START));
             Assert.IsTrue(arrayResult.Last().Target.Equals(EXAMPLE_END));
             Assert.Pass(string.Join("\n", arrayResult.Select(x => x.ToString())));
+        }
+
+        [Test]
+        public void example_graph_dijkstra_search_speed_test()
+        {
+            var graph = GetExampleGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.ShortestPathsDijkstra(edge => edge.Weight, EXAMPLE_START)
+                    (EXAMPLE_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
         }
 
         [Test]
@@ -128,6 +195,27 @@ namespace PerformanceTests
         }
 
         [Test]
+        public void capitals_graph_depth_search_speed_test()
+        {
+            var graph = GetStateCapitalGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.TreeDepthFirstSearch(CAPITALS_START)
+                    (CAPITALS_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
+        }
+
+        [Test]
         public void capitals_graph_breadth_search()
         {
             var graph = GetStateCapitalGraph();
@@ -147,6 +235,27 @@ namespace PerformanceTests
         }
 
         [Test]
+        public void capitals_graph_breadth_search_speed_test()
+        {
+            var graph = GetStateCapitalGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.TreeBreadthFirstSearch(CAPITALS_START)
+                    (CAPITALS_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
+        }
+
+        [Test]
         public void capitals_graph_dijkstra_search()
         {
             var graph = GetStateCapitalGraph();
@@ -163,6 +272,27 @@ namespace PerformanceTests
             Assert.IsTrue(arrayResult.First().Source.Equals(CAPITALS_START));
             Assert.IsTrue(arrayResult.Last().Target.Equals(CAPITALS_END));
             Assert.Pass(string.Join("\n", arrayResult.Select(x => x.ToString())));
+        }
+
+        [Test]
+        public void capitals_graph_dijkstra_search_speed_test()
+        {
+            var graph = GetStateCapitalGraph();
+
+            Stopwatch stopwatch = new Stopwatch();
+            List<long> ticks = new List<long>(SPEED_TEST_COUNT);
+            for (int i = 0; i < SPEED_TEST_COUNT; i++)
+            {
+                stopwatch.Restart();
+                graph.ShortestPathsDijkstra(edge => edge.Weight, CAPITALS_START)
+                    (CAPITALS_END, out var result);
+                var arrayResult = result.ToArray();
+                ticks.Add(stopwatch.ElapsedTicks);
+            }
+
+            double average = ticks.Average(x => x);
+
+            Assert.Pass($"Average Ticks: {average}");
         }
 
         private static AdjacencyGraph<char, WeightedEdge<char>> GetExampleGraph()

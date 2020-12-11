@@ -1,0 +1,71 @@
+.zip Contents:
+	Report: you're reading it.
+	US_GraphMap: visual representation of the entire custom graph w/o edge weights.
+	ME_CA_ShortestPath: visual representation of the Dijkstra search results on the custom graph.
+	WA_FL_ShortestPath: visual representation of the Dijkstra search results on the custom graph.
+	States' Capitals to Adjacent States' Cap: source data for the custom graph including vertices and edge weights.
+
+
+Example Graph 
+    (Results 's' -> 't')
+    QuickGraph
+        All three of the QuickGraph implementations of search end up with the same shortest-path result, even if though the depth- and breadth-first searches don't take into account the edge weights. This is because QuickGraph's default behavior for depth- and breadth-first searches always returns the first path with the fewest nodes, and since the nodes are added 's', 'A'->'I', and then 't' the first path happens to also be the shortest path.
+
+        Depth-First Search
+        (Result: s->A->B->C->t)
+        (Speed: 86.8)
+
+        Breadth-First Search
+        (Result: s->A->B->C->t)
+        (Speed: 103.2)
+
+        Dijkstra's Search
+        (Result: s->A->B->C->t)
+        (Speed: 253.3)
+
+    Custom Implementation
+        Depth-First Search
+        (Result: s->G->H->I->t)
+        (Speed: 64.7)
+        
+        Breadth-First Search
+        (Result: s->A->D->G->B->E->H->C->F->I->t)
+        (Speed: 83.5)
+        Since the data was laid out in the graph starting with 's' and then through to 't' in a breadth-first manner, the breadth-first search takes the most time of all the operations as it has to go through every vertex.
+
+        Dijkstra's Search
+        (Result: Weight 9, s->A->B->C->t)
+        (Speed: 69.8)
+
+Custom Graph 
+    The custom graph is a mapping of all 48 continental US states that are linked together based on the ability to drive from one state's capital to another without crossing into another state in between, with an edge weight of the travel distance to do so.
+    (Results "Olympia, WA" -> "Tallahassee, FL")
+    QuickGraph
+        Depth-First Search
+        (Result: WA->OR->ID->NV->UT->WY->MT->ND->SD->MN->IA->NE->MO->KS->OK->AR->TX->LA->MS->TN->KY->IN->MI->OH->WV->PA->MD->VA->NC->SC->GA->AL->FL)
+        (Speed: 470.1)
+        Wow, this search using QuickGraph is WILD. I attribute this to the way my data was inserted into the graph. I calculated all the vertices/edges going top to bottom on the map starting with WA, so the first edge on each vertex is pointing up or down which leads to the depth-first search going crazy through almost every state from WA to FL.
+        
+        Breadth-First Search
+        (Result: WA->WY->NE->MO->TN->AL->FL)
+        (Speed: 336)
+
+        Dijkstra's Search
+        (Result: WA->ID->UT->CO->OK->AR->MS->AL->FL)
+        (Speed: 809)
+        This is a proper Dijkstra search so it obviously takes longer than the depth- and breadth-first searches which don't take into account edge weights. QuickGraph is a little strange in that it doesn't by default support weights, you have to implement a custom edge type.
+
+    Custom Implementation
+        Depth-First Search
+        (Result: WA->ID->UT->AZ->NM->TX->LA->MS->AL->FL)
+        (Speed: 108.3)
+        
+        Breadth-First Search
+        (Result: WA->OR->ID->CA->NV->MT->WY->UT->AZ->ND->SD->NE->CO->NM->MN->IA->MO->KS->OK->TX->WI->IL->AR->TN->LA->MI->KY->IN->MS->AL->GA->NC->VA->OH->WV->FL)
+        (Speed: 4092.7)
+        Much like how depth-first search went wild in the QuickGraph implementation, this result goes wild for the same reason. Since WA and FL are on opposite sides of the graph we end up traversing almost every vertex.
+
+        Dijkstra's Search
+        (Result: Weight 3201, WA->ID->UT->CO->OK->AR->MS->AL->FL)
+        (Speed: 1020.5)
+        The custom Graph's Dijkstra implementation is slightly slower than the QuickGraph implementation, possibly due to the differences in methodology and data structures. Decompiling QuickGraph shows a fairly similar algorithm, so it's got to be down the the data structures involved.
