@@ -1,0 +1,15 @@
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Final_TinyConsoleRPG.exe
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Final_TinyConsoleRPG.pdb
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\CombatEngine.dll
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Signals.dll
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Spectre.Console.dll
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Wcwidth.dll
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\CombatEngine.pdb
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Signals.pdb
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Spectre.Console.xml
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\bin\Debug\Wcwidth.xml
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\obj\Debug\Final_TinyConsoleRPG.csprojAssemblyReference.cache
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\obj\Debug\Final_TinyConsoleRPG.csproj.CoreCompileInputs.cache
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\obj\Debug\Final_TinyConsoleRPG.csproj.CopyComplete
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\obj\Debug\Final_TinyConsoleRPG.exe
+D:\JAKE\Documents\UAT-School-Projects\MS549\Final_TinyConsoleRPG\Final_TinyConsoleRPG\obj\Debug\Final_TinyConsoleRPG.pdb
