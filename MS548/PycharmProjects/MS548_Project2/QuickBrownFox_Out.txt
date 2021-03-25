@@ -1,0 +1,48 @@
+===> This is the currently loaded blob...
+    The quick brown fox jumps over the lazy dog.
+===> Word Count
+   Count: 9 (8 unique)
+===> Sentence Count
+   Count: 1
+===> Word Definitions
+   "quick"
+      - any area of the body that is highly sensitive to pain (as the flesh underneath the skin or a fingernail or toenail)
+      - accomplished rapidly and without delay
+      - hurried and brief
+   "brown"
+      - an orange of low brightness and saturation
+      - Scottish botanist who first observed the movement of small particles in fluids now known a Brownian motion (1773-1858)
+      - abolitionist who was hanged after leading an unsuccessful raid at Harper's Ferry, Virginia (1800-1859)
+   "fox"
+      - alert carnivorous mammal with pointed muzzle and ears and a bushy tail; most are predators that do not hunt in packs
+      - a shifty deceptive person
+      - the grey or reddish-brown fur of a fox
+   "jumps"
+      - a sudden and decisive increase
+      - an abrupt transition
+      - (film) an abrupt transition from one scene to another
+   "over"
+      - (cricket) the division of play during which six balls are bowled at the batsman by one player from the other team from the same end of the pitch
+      - having come or been brought to a conclusion
+      - at or to a point across intervening space etc.
+   "lazy"
+      - moving slowly and gently
+      - disinclined to work or exertion
+   "dog"
+      - a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds
+      - a dull unattractive unpleasant girl or woman
+      - informal term for a man
+===> Sentiment Analysis
+   Polarity: Neutral
+   Subjectivity: Subjective
+===> Parts of Speech
+   Part of Speech: DT
+       {'the'}
+   Part of Speech: JJ
+       {'lazy', 'quick'}
+   Part of Speech: NN
+       {'dog', 'brown', 'fox'}
+   Part of Speech: VBZ
+       {'jumps'}
+   Part of Speech: IN
+       {'over'}
