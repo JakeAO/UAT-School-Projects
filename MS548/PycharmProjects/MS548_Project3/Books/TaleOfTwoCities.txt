@@ -1,5 +1,4 @@
-﻿BOOK 1
-CHAPTER 1
+﻿CHAPTER 1
 
 It was the best of times, it was the worst of times, it was the age of
 wisdom, it was the age of foolishness, it was the epoch of belief, it
@@ -1945,7 +1944,6 @@ And the old answer:
 
 “I can’t say.”
 
-BOOK 2
 CHAPTER 1
 
 Tellson’s Bank by Temple Bar was an old-fashioned place, even in the
@@ -10127,7 +10125,6 @@ your noble name!” was the poor prisoner’s cry with which he strengthened
 his sinking heart, as he left all that was dear on earth behind him, and
 floated away for the Loadstone Rock.
 
-BOOK 3
 CHAPTER 1
 
 The traveller fared slowly on his way, who fared towards Paris from
