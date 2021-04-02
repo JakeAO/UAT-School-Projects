@@ -20,9 +20,8 @@ class HousePricer:
     __model_save_path: str = None
     __model: Sequential = Sequential([
         InputLayer(input_shape=5),
-        Dense(5, activation=linear),
         Dense(3, activation=relu),
-        Dense(1, activation=relu)
+        Dense(1, activation=linear)
     ])
 
     def __init__(self, state: str) -> None:
@@ -102,8 +101,8 @@ class HousePricer:
 
             print("Fitting model...")
             history = self.__model.fit(x_train, y_train,
-                                       epochs=250,
-                                       batch_size=8,
+                                       epochs=100,
+                                       batch_size=16,
                                        verbose=verbosity,
                                        validation_data=(x_test, y_test))
             print("Fitting completed!")
