@@ -9,7 +9,7 @@ from dataset_loader import DatasetLoader
 from tensorflow.keras.losses import MeanAbsolutePercentageError, MeanSquaredError
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.layers import InputLayer, Dense
+from tensorflow.keras.layers import InputLayer, Dense, Dropout
 from tensorflow.keras.activations import relu, linear
 
 
@@ -19,9 +19,9 @@ class HousePricer:
     __trained: bool = False
     __model_save_path: str = None
     __model: Sequential = Sequential([
-        InputLayer(input_shape=5),
-        Dense(3, activation=relu),
-        Dense(1, activation=linear)
+        InputLayer(input_shape=3),
+        Dense(2, activation=relu),
+        Dense(1, activation=relu)
     ])
 
     def __init__(self, state: str) -> None:
@@ -31,11 +31,6 @@ class HousePricer:
     # get a housing price prediction based on the trained model and the input values
     def predict_house_price(self, city: str, beds: int) -> float:
         self.__ensure_model()
-        return self.predict_house_price(city, beds, date.today())
-
-    # get a housing price prediction based on the trained model and the input values
-    def predict_house_price(self, city: str, beds: int, pred_date: date) -> float:
-        self.__ensure_model()
         zip_entry = next((z for z in zipcodes.filter_by(city=city, state=self.__state)
                           if z['active']
                           and z['zip_code_type'] == 'STANDARD'), None)
@@ -43,12 +38,11 @@ class HousePricer:
             return None
         return self.__predict_house_price(float(zip_entry['lat']),
                                           float(zip_entry['long']),
-                                          beds,
-                                          pred_date)
+                                          beds)
 
     # get a housing price prediction based on the trained model and the input values
-    def __predict_house_price(self, lat: float, long: float, beds: int, pred_date: date) -> float:
-        input_data = [lat, long, beds, int(pred_date.month.real), int(pred_date.year)]
+    def __predict_house_price(self, lat: float, long: float, beds: int) -> float:
+        input_data = (lat, long, beds)
         output_data = self.__model.predict([input_data])
         return output_data[0][0]
         pass

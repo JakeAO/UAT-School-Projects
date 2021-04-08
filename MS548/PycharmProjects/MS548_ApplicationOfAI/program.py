@@ -47,12 +47,10 @@ class ApiLibrarySetups:
         print("Please enter the following details about the house you would like to predict the value of.\n"
               "State: 2 characters (e.g. AZ, WY, etc.)\n"
               "City: full name (e.g. Tempe, Cheyenne, etc.)\n"
-              "Beds: number of bedrooms (e.g. 2, 3, etc.\n"
-              "Date: date of the prediction (e.g. 1/15/2021, etc.)")
+              "Beds: number of bedrooms (e.g. 2, 3, etc.")
         state = input(">> State: ")
         city = input(">> City: ")
         beds = input(">> Beds: ")
-        pred_date = input(">> Date: ")
 
         # validate all inputs
         if state not in self.__stateAbbreviations:
@@ -66,11 +64,6 @@ class ApiLibrarySetups:
         except ValueError:
             print(f"\n\n\"{beds}\" is not a valid bed number, please try again...\n\n")
             return
-        try:
-            pred_date = date_parser.parse(pred_date)
-        except ValueError:
-            print(f"\n\n\"{pred_date}\" is not a valid date, please try again...\n\n")
-            return
 
         # find or create the pricer
         pricer = self.__pricers.get(state)
@@ -80,12 +73,11 @@ class ApiLibrarySetups:
         print("\n")
 
         # ask pricer for prediction
-        prediction = pricer.predict_house_price(city, beds, pred_date)
+        prediction = pricer.predict_house_price(city, beds)
         if prediction is None:
             print(f"\n\nPrediction failed due to invalid parameter(s), please try again...\n\n")
             return
 
         print(f"\n\n[Price Prediction Results]\n"
               f"{beds} bedroom home in {city}, {state}.\n"
-              f"Predicting price on {pred_date}.\n"
               f"Prediction: ${prediction:0,.0f}\n\n")

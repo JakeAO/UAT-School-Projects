@@ -75,7 +75,7 @@ class DatasetLoader:
                 long = coords[1]
 
                 # loop over each month column to get the prices in that month
-                for colIdx in range(2, len(columns)):
+                for colIdx in range(len(columns)-1, len(columns)):
                     # pull out the price, and confirm it's a valid value as to not pollute the model
                     price = float(row[colIdx])
                     if math.isnan(price) or math.isinf(price):
@@ -88,7 +88,7 @@ class DatasetLoader:
                     if math.isnan(month) or math.isinf(month) or math.isnan(year) or math.isinf(year):
                         continue
 
-                    all_data.append(([lat, long, month, year, bedroom_count], price))
+                    all_data.append(((lat, long, bedroom_count), price))
 
         # shuffle up the data, random data is good data
         np.random.shuffle(all_data)
