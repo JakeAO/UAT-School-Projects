@@ -1,0 +1,76 @@
+Project Survival Test:
+For each of the questions below, give the project 3 points for each "yes" answer.
+
+Give the project partial credit if you feel that is most accurate—for example, give it 2 points for "probably" and 1 point for "kind of, but not really."
+
+If the project is in the early stages, answer the questions based on the project plans. If the project is well underway, answer the questions based on what has actually happened on the project.
+
+Requirements
+0 - Does the project have a clear, unambiguous vision statement or mission statement?
+3 - Do all team members believe the vision is realistic?
+1 - Does the project have a description the project objectives and exactly how these objectives will be measured?
+0 - Does the project have a user interface prototype that realistically and vividly demonstrates the functionality that the actual system will have?
+3 - Does the project have a detailed, written specification of what the software is supposed to do?
+0 - Did the project team interview people who will actually use the software (end users) early in the project and continue to involve them throughout the project?
+0 - Does the project have a detailed written plan on how they will create/assign/sign off on tasks and features? (Agile? Waterfall? Some other method you have detailed on paper?)
+0 - Does the project’s task list include how the players will install the game, start menus, audio and video options, saved-game data structures, and other "minor"/"non-game" tasks?
+1 - Were the schedule and budget estimates officially updated at the end of the most recently completed phase / sprint?
+2 - Does the project have detailed, written architecture and design documents OR if agile, does the project backlog encompass all of the current project goals/stories?
+0 - Does the project have a detailed, written Quality Assurance Plan that requires design and code reviews in addition to system testing?
+0 - Does the project have a detailed delivery plan for the software, which describes the stages in which the software will be delivered? 
+0 - Does the project’s plan include time for holidays, vacation days, sick days, and ongoing training, and are resources allocated at less than 100 percent? 
+3 - Was the project plan, including the schedule, approved by the development team, the quality assurance team, and the technical writing team—in other words, the people responsible for doing the work?
+
+Project Control
+3 - Has a single key executive who has decision-making authority been made responsible for the project, and does the project have that person’s active support?
+1 - Does the project manager’s workload allow him or her to devote an adequate amount of time to the project?
+0 - Does the project have well-defined, detailed milestones ("binary milestones") that are considered to be either 100 percent done or 100 percent not done?
+0 - Can a project stakeholder easily find out which of these binary milestones have been completed?
+0 - Does the project have a feedback channel by which project members can anonymously report problems to their own managers and upper managers?
+0 - Does the project have a written plan for controlling changes to the software’s specification? OR If Agile, are you having sprint review meetings with the stakeholders every sprint?
+0 - Does the project have a Change Control Board that has final authority to accept or reject proposed changes? OR If Agile, are you having sprint retrospective meetings with the team every sprint?
+3 - Are planning materials and status information for the project—including effort and schedule estimates, task assignments, and progress compared to the plan thus far—available to every team member?
+3 - Is all source code placed under revision/version control?
+3 - Does the project environment include the basic tools needed to complete the project, including defect tracking software, source code control, and project management software?
+
+Risk Management
+0 - Does the project plan articulate a list of current risks to the project? Has the list been updated recently?
+0 - Does the project have a project risk officer who is responsible for identifying emerging risks to the project?
+3 - If the project uses subcontractors, does it have a plan for managing each subcontract organization and a single person in charge of each one? (Give the project full score if it doesn’t use subcontractors.)
+
+Personnel
+3 - Does the project team have all the technical expertise needed to complete the project?
+3 - Does the project team have expertise with the environment in which the software will operate?
+3 - Does the project have a technical leader capable of leading the project successfully?
+3 - Are there enough people to do all the work required?
+3 - Does everyone work well together?
+2 - Is each person committed to the project?
+
+Total
+Preliminary score. Add up the points next to each answer: 46
+Size multiplier: 1.5
+1.5 if the team has 3 or fewer full-time-equivalent people including developers, QA, and producers.
+1.25 if it has 4 to 6 full-time–equivalent people.
+1.0 otherwise
+Final score: 69
+Multiply the preliminary score by the size multiplier. 
+Scoring Guidelines
+
+This is a difficult test for most projects; many will score less than 50 points. The table below explains how to interpret the score.
+
+Score Comments
+90+ : Outstanding 
+A project with this score is virtually guaranteed to succeed in all respects, meeting its schedule, budget, quality, and other targets. 
+
+80–89 - Excellent
+A project at this level is performing much better than average. Such a project has a high probability of delivering its software close to its schedule, budget, and quality targets.
+
+60–79 - Good
+A score in this range represents a better-than-average level of software development effectiveness. Such a project stands a fighting chance of meeting either its schedule or its budget target, but it probably won’t meet both.
+
+40–59 - Fair
+This score is typical. A project with this score will likely experience high stress and shaky team dynamics, and the software will ultimately be delivered with less functionality than desired at greater cost and with a longer schedule.
+
+<40 - At Risk
+
+A project with this score has significant weaknesses in the major areas of requirements, planning, project control, risk management, and personnel. The primary concern of a project in this category should be whether it will finish at all.

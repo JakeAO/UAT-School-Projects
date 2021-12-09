@@ -1,0 +1,28 @@
+Outline strategies for recovery (Defer, Disperse, Relocate)
+- Defer: Shipping can be deferred a bit, ideally the company it's operating right up against delivery deadlines anyway so shipping can get a little backed up. Manufacturing can be deferred, depending on the active contracts and their status. IT can't really be deferred too much.
+- Disperse: 
+- Relocate: Manufacturing is the only department which can't be relocated due to the specialized, custom-made machines being used. All other departments' responsibilities could be relatively easily relocated.
+
+Look at our document and decide what our minimal operation capacity is!
+- I don't know what this is, isn't this just the minimum critical business functions below?
+
+Define what the minimum critical business functions are and how long it might take to recover.
+- Manufacturing (Disks, Packaging, Inserts) - At minimum recovery takes 2 days (specified in the assignment prompt thing).
+- Shipping (Receiving Supplies, Shipping Product) - Recovery should be quick.
+- IT (Database Containing Masters, Database Containing Orders) - No idea on recovery time.
+
+Document (3?) example disaster scenarios for recovery with strategy.
+- Building Two is destroyed somehow: Sales & Advertising either shut down temporarily, or move to Building One with adminstration. They'll probably need laptops. R&D can shut down temporarily, or move to Building Three. Shipping has to remain open, but will move to Building Three with Manufacturing (which is a better location anyway).
+- Building Three is destroyed somehow: Big screwed. Need to order new servers and hopefully IT has backups to put on them. Need to order new custom manufacturing machines, which is going to take a long, long time.
+- ?
+
+Plan for 3 months (90) days
+- ?
+
+What does our testing look like. Are we practicing a plan with drills?
+- ?
+
+GAP ANAYLISIS THE DOCUMENT looking for suprises in the plan. What are we missing in the plan that we have not thought of yet?
+- Need plan activation procedures outlined for BC/DR and IR.
+- Need mitigation procedures outlined for BC/DR.
+- Need IR response plans.

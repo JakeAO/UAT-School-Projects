@@ -1,0 +1,11 @@
+Assignment Module 5 (Team)
+
+BC/DR Additions/Updates:
+- Activation process/procedures. (When does the BC/DR come online and who is responsible for what.)
+- Recovery and restoration process/procedures. (What are the responsible parties doing and how is that getting things up and running asap.)
+- Mitigation process/procedures. (What steps can be taken to avoid identified disasters or lessen their impact.)
+
+IR Additions/Updates:
+- Activation/Escalation process. (Who needs to be notified of a potential IT issue, how are they notified, what is the expected response time.)
+- Response plans by Category. (How is IT expected to respond for each threat category, how quickly are they expected to spin up on the issue, how frequently are they reporting progress to management.)
+- Containment/Eradication/Recovery plan outline. (What specific steps are in place for responding to confirmed threats, who is doing what to what machines, who is responsible for notifying which parties)
